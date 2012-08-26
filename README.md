@@ -40,8 +40,8 @@ This is all code that you have to put before your function:
     <!-- Call the decorator -->
     var decRunOnce = function(func){
         var newFunc = function(){
-            if (!arguments.callee.runned){
-                arguments.callee.runned = true;
+            if (!newFunc.runned){
+                newFunc.runned = true;
                 func.apply(this, arguments);
             }
         };
@@ -51,8 +51,8 @@ This is all code that you have to put before your function:
         };
         return newFunc;
     };
-
-
+    
+    
     /* User Function */
     function myFunction(arg){
         console.log(arg);
@@ -62,22 +62,22 @@ This is all code that you have to put before your function:
     myFunction('c'); /* show on console => c */
     myFunction('z'); /* show on console => z */
     myFunction('foo'); /* show on console => foo */
-
+    
     /* Now you call Run Once Decorator on your function. */
     myFunction = decRunOnce(myFunction);
-    MyFunction('b'); /* show on console => b */
-    MyFunction('b'); /* Do nothing */
-    MyFunction('c'); /* Do nothing */
-    MyFunction('bar'); /* Do nothing */
-    MyFunction('foo'); /* Do nothing */
-    MyFunction('foobar'); /* Do nothing */
-    MyFunction('b'); /* Do nothing */
-    MyFunction('b'); /* Do nothing */
+    myFunction('b'); /* show on console => b */
+    myFunction('b'); /* Do nothing */
+    myFunction('c'); /* Do nothing */
+    myFunction('bar'); /* Do nothing */
+    myFunction('foo'); /* Do nothing */
+    myFunction('foobar'); /* Do nothing */
+    myFunction('b'); /* Do nothing */
+    myFunction('b'); /* Do nothing */
     
-    MyFunction.reset(); /* now you can run once your function */
-    MyFunction('bar'); /* show on console => bar */
-    MyFunction('c'); /* Do nothing */
-    MyFunction('bar'); /* Do nothing */
-    MyFunction('foo'); /* Do nothing */
-    MyFunction('c'); /* Do nothing */
+    myFunction.reset(); /* now you can run once your function */
+    myFunction('bar'); /* show on console => bar */
+    myFunction('c'); /* Do nothing */
+    myFunction('bar'); /* Do nothing */
+    myFunction('foo'); /* Do nothing */
+    myFunction('c'); /* Do nothing */
     
