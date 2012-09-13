@@ -7,6 +7,7 @@ Run Once JS Decorator is a js function that ensures that your function run once.
 It's look like a python decorator, but without @.
 
 Python uses:
+
     @dec
     def my_func(params):
         #Code
